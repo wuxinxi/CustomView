@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--验证码-->
+    <declare-styleable name="VerifCodeView">
+        <attr name="verify_Text_color" format="color"></attr>
+        <attr name="verify_text_size" format="dimension"></attr>
+        <attr name="verify_text_bg" format="color"></attr>
+        <attr name="verify_text_code_length" format="integer"></attr>
+    </declare-styleable>
+
+    <!--太极图-->
+    <declare-styleable name="TaijiDiagram">
+        <attr name="taiji_left_color" format="color"></attr>
+        <attr name="taiji_right_color" format="color"></attr>
+        <attr name="taiji_radius" format="integer"></attr>
+        <attr name="taiji_bg" format="color"></attr>
+    </declare-styleable>
+</resources>

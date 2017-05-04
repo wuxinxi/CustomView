@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+
+    <!--验证码-->
+    <style name="VerifyStyle">
+        <item name="verify_Text_color">@color/colorGray</item>
+        <item name="verify_text_size">16sp</item>
+        <item name="verify_text_bg">@color/colorAccent</item>
+        <item name="verify_text_code_length">6</item>
+    </style>
+
+    <!--太极图-->
+    <style name="TaijiStyle">
+        <item name="taiji_left_color">@color/colorBalck</item>
+        <item name="taiji_right_color">@color/colorWhite</item>
+        <item name="taiji_radius">250</item>
+        <item name="taiji_bg">@null</item>
+    </style>
+
+</resources>
