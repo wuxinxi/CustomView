@@ -1,22 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    android:gravity="center"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-
+    android:weightSum="1"
     tools:context="com.wxx.customview.MainActivity">
+
+    <com.wxx.customview.base.BaseView
+        android:id="@+id/baseView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.wxx.customview.fengche.RotationView
+        android:id="@+id/rotationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <com.wxx.customview.verifcode.VerifCodeView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/verify"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:layout_margin="20dp"
         app:verify_Text_color="@color/colorAccent"
         app:verify_text_bg="#5FE086"
         app:verify_text_code_length="4"
@@ -26,9 +41,30 @@
         android:id="@+id/taijiDiagram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
         app:taiji_left_color="@color/colorAccent"
         app:taiji_radius="100"
         app:taiji_right_color="@color/colorPrimary" />
+
+    <com.wxx.customview.PieChatView
+        android:id="@+id/pieChatView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.00"
+        android:visibility="gone" />
+
+    <com.wxx.customview.MyGridView
+        android:id="@+id/myGridView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:gird_text_size="14sp" />
+
+    <com.wxx.customview.paopaochuang.PaoPao
+        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:id="@+id/pao"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

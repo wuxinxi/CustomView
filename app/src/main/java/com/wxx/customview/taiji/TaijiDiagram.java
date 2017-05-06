@@ -5,8 +5,8 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.wxx.customview.R;
@@ -42,9 +42,11 @@ public class TaijiDiagram extends View {
 
     private int height;
 
-    private static int jiaodu = 0;
+    private static int rad = 30;
 
-    private AppCompatActivity appCompatActivity;
+    private final long stopTime = 10000;
+
+    private long upTime = 0;
 
     public TaijiDiagram(Context context) {
         this(context, null);
@@ -84,6 +86,7 @@ public class TaijiDiagram extends View {
             }
 
         }
+
         array.recycle();
         mBalckPaint = new Paint();
         mBalckPaint.setColor(left_color);
@@ -128,15 +131,43 @@ public class TaijiDiagram extends View {
         canvas.translate(radius, radius);
         canvas.drawColor(taiji_bg);
 
+        rad -= 3;
+        canvas.rotate(rad, 0, 0);
+
         canvas.drawArc(mRectF, 90, 180, true, mBalckPaint);
         canvas.drawArc(mRectF, -90, 180, true, mWhitePaint);
 
+
         canvas.drawCircle(0, -radius / 2, radius / 2, mBalckPaint);
         canvas.drawCircle(0, radius / 2, radius / 2, mWhitePaint);
-
         canvas.drawCircle(0, -radius / 2, radius / 5, mWhitePaint);
         canvas.drawCircle(0, radius / 2, radius / 5, mBalckPaint);
 
-        canvas.rotate(jiaodu, mRectF.centerX(), mRectF.centerY());
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        switch (action) {
+            case MotionEvent.ACTION_UP:
+                upTime = System.currentTimeMillis();
+                post(new Runnable() {
+                    @Override
+                    public void run() {
+//                        long duration = System.currentTimeMillis() - upTime;
+//                        if (upTime == stopTime)
+//                            return;
+//                        else if (duration < stopTime)
+                            post(this);
+
+                        invalidate();
+                    }
+                });
+                break;
+            case MotionEvent.ACTION_MOVE:
+                postInvalidate();
+                break;
+        }
+        return true;
     }
 }

@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import com.wxx.customview.R;
@@ -126,6 +127,9 @@ public class VerifCodeView extends View {
         canvas.drawRect(0, 0, getMeasuredWidth(), getMeasuredHeight(), mPaint);
         mPaint.setColor(textColor);
         canvas.drawText(msg, getWidth() / 2 - mRect.width() / 2, getHeight() / 2 + mRect.height() / 2, mPaint);
+
+        Log.d(TAG,"mRect.width="+mRect.width());
+        Log.d(TAG,"getWidth="+getWidth());
 
         // 绘制小圆点
         int[] point;

@@ -25,4 +25,21 @@
         <item name="taiji_bg">@null</item>
     </style>
 
+    <!--网格-->
+    <style name="MyGridViewStyle">
+        <item name="grid_line_color">@color/colorAccent</item>
+        <item name="grid_line_width">1dp</item>
+        <item name="gird_text_color">@color/colorPrimary</item>
+        <item name="gird_text_size">12sp</item>
+        <item name="gird_over_color">@color/blue</item>
+        <item name="grid_over_alpha">100</item>
+    </style>
+
+    <!--泡泡窗-->
+    <style name="MypaoPaoStyle">
+        <item name="paopao_text">@string/default_name</item>
+        <item name="paopao_text_size">16sp</item>
+        <item name="paopao_text_color">@color/colorWhite</item>
+        <item name="paopao_color">@color/blue</item>
+    </style>
 </resources>

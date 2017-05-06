@@ -6,4 +6,12 @@
     <color name="colorGray">#C0C0C0</color>
     <color name="colorBalck">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <color name="dark">#0097a7</color>
+    <color name="grey">#e0e0e0</color>
+    <color name="gray_dark">#666666</color>
+    <color name="black_alpha_light">#3c3f41</color>
+    <color name="black_light">#383838</color>
+    <color name="blue">#2C97DF</color>
+    <color name="red">#ff4081</color>
 </resources>

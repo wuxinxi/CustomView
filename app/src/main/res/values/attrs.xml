@@ -16,4 +16,29 @@
         <attr name="taiji_radius" format="integer"></attr>
         <attr name="taiji_bg" format="color"></attr>
     </declare-styleable>
+
+    <!--饼状图-->
+    <declare-styleable name="PieChatView">
+        <attr name="pie_color_1" format="color"></attr>
+
+
+    </declare-styleable>
+
+    <!--网格图-->
+    <declare-styleable name="MyGridView">
+        <attr name="grid_line_color" format="color"></attr>
+        <attr name="grid_line_width" format="dimension"></attr>
+        <attr name="gird_text_color" format="color"></attr>
+        <attr name="gird_text_size" format="dimension"></attr>
+        <attr name="gird_over_color" format="color"></attr>
+        <attr name="grid_over_alpha" format="integer"></attr>
+    </declare-styleable>
+
+    <!--泡泡窗-->
+    <declare-styleable name="PaoPao">
+        <attr name="paopao_text" format="string"></attr>
+        <attr name="paopao_text_size" format="dimension"></attr>
+        <attr name="paopao_text_color" format="color"></attr>
+        <attr name="paopao_color" format="color"></attr>
+    </declare-styleable>
 </resources>
