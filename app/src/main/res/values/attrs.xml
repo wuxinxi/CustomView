@@ -41,4 +41,28 @@
         <attr name="paopao_text_color" format="color"></attr>
         <attr name="paopao_color" format="color"></attr>
     </declare-styleable>
+
+    <!--波浪-->
+    <declare-styleable name="WaveView">
+        <attr name="wave_bg_color" format="color"></attr>
+        <attr name="wave_width" format="integer"></attr>
+        <attr name="wave_count" format="integer"></attr>
+        <attr name="wave_text" format="string"></attr>
+        <attr name="wave_text_color" format="color"></attr>
+        <attr name="wave_text_size" format="dimension"></attr>
+    </declare-styleable>
+
+    <!--仪表盘-->
+    <declare-styleable name="BoardView">
+        <attr name="board_text_color" format="color"></attr>
+        <attr name="board_text_size" format="dimension"></attr>
+        <attr name="board_pointer_color" format="color"></attr>
+        <attr name="board_pointer_stroke" format="dimension"></attr>
+        <attr name="board_pointer_count" format="integer"></attr>
+        <attr name="board_bg" format="color"></attr>
+        <attr name="board_in_circle_radius" format="dimension"></attr>
+        <attr name="board_in_circle_stroke" format="dimension"></attr>
+        <attr name="board_in_circle_color" format="color"></attr>
+    </declare-styleable>
+
 </resources>

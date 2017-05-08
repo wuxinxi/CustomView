@@ -42,4 +42,26 @@
         <item name="paopao_text_color">@color/colorWhite</item>
         <item name="paopao_color">@color/blue</item>
     </style>
+
+    <!--波浪-->
+    <style name="WaveStyle">
+        <item name="wave_bg_color">@color/blue</item>
+        <item name="wave_width">20</item>
+        <item name="wave_count">10</item>
+        <item name="wave_text">恭喜你中了一等奖!</item>
+        <item name="wave_text_color">@color/colorWhite</item>
+        <item name="wave_text_size">14sp</item>
+    </style>
+    <!--仪表盘-->
+    <style name="MyBoardStyle">
+        <item name="board_text_color">@color/colorBalck</item>
+        <item name="board_text_size">14dp</item>
+        <item name="board_pointer_color">@color/blue</item>
+        <item name="board_pointer_stroke">3dp</item>
+        <item name="board_pointer_count">20</item>
+        <item name="board_bg">@color/colorGray</item>
+        <item name="board_in_circle_radius">15dp</item>
+        <item name="board_in_circle_stroke">10dp</item>
+        <item name="board_in_circle_color">@color/gray</item>
+    </style>
 </resources>

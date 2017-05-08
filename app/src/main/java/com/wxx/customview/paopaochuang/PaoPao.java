@@ -119,11 +119,6 @@ public class PaoPao extends View {
             textPaint.getTextBounds(str, 0, str.length(), rect);
             canvas.drawText(str, width / 2 - rect.width() / 2, height / 2 + rect.height() / 2, textPaint);
 
-            Log.d(TAG, "rect.width()=" + rect.width());
-            Log.d(TAG, "getWidth()=" + getWidth());
-            Log.d(TAG, "width=" + width);
-
-
             paint.setColor(paopaoColor);
             path.moveTo(width / 2 - 30, height);
             path.lineTo(width / 2, height + 30);
