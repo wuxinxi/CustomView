@@ -34,9 +34,9 @@
 
     <SeekBar
         android:id="@+id/seekBar"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:layout_height="wrap_content"/>
 
     <com.wxx.customview.linechart.LineChart
         android:layout_width="wrap_content"
@@ -98,9 +98,9 @@
 
     <com.wxx.customview.paopaochuang.PaoPao
         android:id="@+id/pao"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:visibility="gone" />
+        android:layout_marginTop="20dp"/>
 
 </LinearLayout>
