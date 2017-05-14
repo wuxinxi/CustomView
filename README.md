@@ -9,20 +9,21 @@
 * 重新onLayout：用来确定该控件及子控件在父窗体中的位置
 ## DEMO
 ### Example No.1
-<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_001.jpg" width="460" /> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_001.png" width="460" /> <br/>
 ### Example No.2
-<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_002.jpg" width="460" /> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_002.png" width="460" /> <br/>
 ### Example No.3
-<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_003.jpg" width="460" /> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_003.png" width="460" /> <br/>
 ### Example No.4
-<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_004.jpg" width="460" /> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_004.png" width="460" /> <br/>
 ### Example No.5
-<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_005.jpg" width="460" /> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_005.png" width="460" /> <br/>
 ### Example No.6
-<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_006.jpg" width="460" /> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_006.png" width="460" /> <br/>
 ### Example No.7
-<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_007.jpg" width="460" /> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_007.png" width="460" /> <br/>
 ### Example No.8
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_008.png" width="460" /> <br/>
 ### Example No.9
 ### Example No.10
 ### Example No.11
