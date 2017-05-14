@@ -1,6 +1,7 @@
 package com.wxx.customview.biaopan;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import com.wxx.customview.R;
 import com.wxx.customview.util.Util;
 
 /**
@@ -25,12 +27,38 @@ public class BoardView extends View {
 
     private Paint textPaint;
 
+    //view背景
+    private int board_bg;
+
+    //最里面圆以及指针的颜色
+    private int board_in_circle_color;
+
+    //最里面圆的半径
+    private int board_in_circle_radius;
+
+    //最里面圆的的stroke
+    private int board_in_circle_stroke;
+
+    //指针颜色
+    private int board_pointer_color;
+
+    //指针数量
+    private int board_pointer_count;
+
+    //文字颜色
+    private int board_text_color;
+
+    //指针stroke
+    private int board_pointer_stroke;
+
+    //文字大小
+    private int board_text_size;
+
     private int lineColor = Color.parseColor("#2C97DF");
 
     private int rangeColor = Color.parseColor("#CADCEB");
 
     private int width = 300;
-
     private int height = 300;
 
     private float strokeWidth = 3;
@@ -71,6 +99,35 @@ public class BoardView extends View {
 
     public BoardView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.BoardView, 0, R.style.MyBoardStyle);
+        int size = array.getIndexCount();
+        for (int i = 0; i < size; i++) {
+            int arr = array.getIndex(i);
+            switch (arr) {
+                case R.styleable.BoardView_board_bg:
+                    board_bg = array.getColor(arr, 0);
+                    break;
+                case R.styleable.BoardView_board_in_circle_color:
+                    break;
+                case R.styleable.BoardView_board_in_circle_radius:
+                    break;
+                case R.styleable.BoardView_board_in_circle_stroke:
+                    break;
+                case R.styleable.BoardView_board_pointer_color:
+                    break;
+                case R.styleable.BoardView_board_pointer_count:
+                    break;
+                case R.styleable.BoardView_board_text_color:
+                    break;
+                case R.styleable.BoardView_board_pointer_stroke:
+                    break;
+                case R.styleable.BoardView_board_text_size:
+                    break;
+            }
+
+        }
+
+        array.recycle();
         mContext = context;
         mPaint = new Paint();
         mPaint.setColor(lineColor);
@@ -84,7 +141,7 @@ public class BoardView extends View {
 
         textPaint = new Paint();
         textPaint.setColor(textColor);
-        textPaint.setTextSize(Util.dip2px(context,textSize));
+        textPaint.setTextSize(Util.dip2px(context, textSize));
 
     }
 
@@ -97,7 +154,7 @@ public class BoardView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-//        canvas.drawColor(Color.GRAY);
+        canvas.drawColor(Color.GRAY);
         //绘制最外层的
         mPaint.setColor(lineColor);
         mRectF.set(strokeWidth, strokeWidth, width - strokeWidth, height - strokeWidth);
