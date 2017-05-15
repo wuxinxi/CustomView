@@ -23,7 +23,7 @@
 ### Example No.7
 <img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_007.png" width="460" /> <br/>
 ### Example No.8
-<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_008.png" width="460" /> <br/>
+<img src="https://raw.githubusercontent.com/wuxinxi/CustomView/master/img/img_008_002.png" width="460" /> <br/>
 ### Example No.9
 ### Example No.10
 ### Example No.11
