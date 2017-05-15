@@ -2,6 +2,7 @@ package com.wxx.customview.calendar;
 
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -13,6 +14,8 @@ import java.util.Date;
 public class Util {
 
     private static final String TAG = "Util";
+
+    private static SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
     public static Date getCurrentDate = new Date();
 
@@ -58,10 +61,12 @@ public class Util {
      * @return
      */
     public static boolean isSameMonth(int currentPageMonth, Date date2) {
-        Log.d(TAG, "传入当前页面的月份：currentPageMonth=" + currentPageMonth);
-        Log.d(TAG, "传入的月份：date2=" + date2.getMonth());
         if (currentPageMonth == date2.getMonth())
             return true;
         return false;
+    }
+
+    public static String getTime(Date date) {
+        return format.format(date);
     }
 }

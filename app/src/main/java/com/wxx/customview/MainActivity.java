@@ -17,6 +17,7 @@ import com.wxx.customview.paopaochuang.PaoPao;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, TRCalendar.CalendarListener {
 
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private PaoPao pao;
     private TRCalendar tRcalendar;
+    private List<String> signList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         activity_main = (LinearLayout) findViewById(R.id.activity_main);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         panView = (BoardView) findViewById(R.id.panView);
+
         tRcalendar = (TRCalendar) findViewById(R.id.tRcalendar);
+        tRcalendar.setListener(this);
+        signList.add("2017-05-17");
+        signList.add("2017-05-18");
+        signList.add("2017-05-19");
+        signList.add("2017-05-22");
+        signList.add("2017-07-22");
+        signList.add("2017-09-22");
+        signList.add("2017-10-22");
+
+        tRcalendar.setAddDateSign(signList);
         activity_main.setOnClickListener(this);
         animation = new MyAnimation();
         animation.setDuration(1000);
@@ -62,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
-        tRcalendar.setListener(this);
 
     }
 

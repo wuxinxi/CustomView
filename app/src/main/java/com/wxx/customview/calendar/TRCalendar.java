@@ -17,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 作者：Tangren on 2017/5/14 10:42
@@ -44,6 +45,8 @@ public class TRCalendar extends LinearLayout implements View.OnClickListener, On
 
     private int currentPostion = -1;
 
+    private List<String> signList = new ArrayList<>();
+
     public TRCalendar(Context context) {
         this(context, null);
     }
@@ -70,7 +73,7 @@ public class TRCalendar extends LinearLayout implements View.OnClickListener, On
         next.setOnClickListener(this);
         manager = new GridLayoutManager(context, 7);
         gridView.setLayoutManager(manager);
-        mAdapter = new CalendarAdapter();
+        mAdapter = new CalendarAdapter(context);
         mAdapter.setOnClick(this);
         mAdapter.setOnLongClick(this);
     }
@@ -140,5 +143,12 @@ public class TRCalendar extends LinearLayout implements View.OnClickListener, On
         void setOnIteclick(ArrayList<Date> list, int postion);
     }
 
+
+    public void setAddDateSign(List<String> dateSignList) {
+        if (dateSignList == null || dateSignList.size() == 0) return;
+        signList.addAll(dateSignList);
+        if (mAdapter == null) return;
+        mAdapter.setAddSign(signList);
+    }
 
 }

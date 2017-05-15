@@ -1,6 +1,8 @@
 package com.wxx.customview.calendar;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -15,6 +17,7 @@ import com.wxx.customview.circlebgtextview.CircleBgTextView;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 作者：Tangren on 2017/5/14 15:27
@@ -23,7 +26,7 @@ import java.util.Date;
  */
 public class CalendarAdapter extends RecyclerView.Adapter {
 
-    private ArrayList<Date> list=new ArrayList<>();
+    private ArrayList<Date> list = new ArrayList<>();
 
     private int currentPageMonth;
 
@@ -34,10 +37,13 @@ public class CalendarAdapter extends RecyclerView.Adapter {
 
     private int mLastCheckedPostion = -1;
 
+    private List<String> signList = new ArrayList<>();
+
     private static final String TAG = "CalendarAdapter";
+    private Context context;
 
-    public CalendarAdapter() {
-
+    public CalendarAdapter(Context context) {
+        this.context = context;
     }
 
     public void setAdd(ArrayList<Date> list, int currentPageMonth) {
@@ -46,6 +52,12 @@ public class CalendarAdapter extends RecyclerView.Adapter {
         this.currentPageMonth = currentPageMonth;
         mBooleanArray = new SparseBooleanArray(list.size());
     }
+
+    public void setAddSign(List<String> signList) {
+        this.signList.clear();
+        this.signList.addAll(signList);
+    }
+
 
     private LayoutInflater inflater;
 
@@ -75,10 +87,22 @@ public class CalendarAdapter extends RecyclerView.Adapter {
             calendarHolder.textView.setBackgroundResource(R.drawable.circle_shape);
         }
 
+
         if (!mBooleanArray.get(position) && !Util.isSameDate(date)) {
             ((CalendarHolder) holder).textView.setBackgroundResource(0);
         } else if (mBooleanArray.get(position) && !Util.isSameDate(date)) {
             ((CalendarHolder) holder).textView.setBackgroundResource(R.drawable.circle_shape_checked);
+        }
+
+
+        if (signList.size() > 0) {
+            for (int i = 0; i < signList.size(); i++) {
+                if (TextUtils.equals(Util.getTime(date), signList.get(i))) {
+                    Drawable drawable = context.getResources().getDrawable(R.drawable.circle_shape_smal);
+                    drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+                    calendarHolder.textView.setCompoundDrawables(null, null, null, drawable);
+                }
+            }
         }
 
         calendarHolder.textView.setText(String.valueOf(date.getDate()));
