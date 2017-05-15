@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,15 +23,28 @@ import java.util.Date;
  */
 public class CalendarAdapter extends RecyclerView.Adapter {
 
-    private ArrayList<Date> list;
+    private ArrayList<Date> list=new ArrayList<>();
 
     private int currentPageMonth;
 
+    private OnItemClick itemClick;
+    private OnLongItemClick longItemClick;
+
+    private SparseBooleanArray mBooleanArray;
+
+    private int mLastCheckedPostion = -1;
+
     private static final String TAG = "CalendarAdapter";
 
-    public CalendarAdapter(ArrayList<Date> list, int currentPageMonth) {
-        this.list = list;
+    public CalendarAdapter() {
+
+    }
+
+    public void setAdd(ArrayList<Date> list, int currentPageMonth) {
+        this.list.clear();
+        this.list.addAll(list);
         this.currentPageMonth = currentPageMonth;
+        mBooleanArray = new SparseBooleanArray(list.size());
     }
 
     private LayoutInflater inflater;
@@ -38,8 +52,8 @@ public class CalendarAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.calendar_item, parent, false);
-        return new CalendarHolder(view);
+        View view = inflater.inflate(R.layout.calendar_item_view, parent, false);
+        return new CalendarHolder(view, itemClick, longItemClick, list);
     }
 
     @Override
@@ -53,12 +67,18 @@ public class CalendarAdapter extends RecyclerView.Adapter {
         if (Util.isSameMonth(currentPageMonth, date)) {
             calendarHolder.textView.setTextColor(Color.parseColor("#000000"));
         } else {
-            calendarHolder.textView.setTextColor(Color.parseColor("#C0C0C0"));
+            calendarHolder.textView.setTextColor(Color.parseColor("#E0E0E0"));
         }
 
         if (Util.isSameDate(date)) {
-            calendarHolder.textView.setTextColor(Color.parseColor("#FF4081"));
-            calendarHolder.textView.isToday = true;
+            calendarHolder.textView.setTextColor(Color.parseColor("#FFFFFF"));
+            calendarHolder.textView.setBackgroundResource(R.drawable.circle_shape);
+        }
+
+        if (!mBooleanArray.get(position) && !Util.isSameDate(date)) {
+            ((CalendarHolder) holder).textView.setBackgroundResource(0);
+        } else if (mBooleanArray.get(position) && !Util.isSameDate(date)) {
+            ((CalendarHolder) holder).textView.setBackgroundResource(R.drawable.circle_shape_checked);
         }
 
         calendarHolder.textView.setText(String.valueOf(date.getDate()));
@@ -69,14 +89,55 @@ public class CalendarAdapter extends RecyclerView.Adapter {
         return list == null ? 0 : list.size();
     }
 
+    public void setOnClick(OnItemClick itemClick) {
+        this.itemClick = itemClick;
+    }
 
-    private class CalendarHolder extends RecyclerView.ViewHolder {
+    public void setOnLongClick(OnLongItemClick longItemClick) {
+        this.longItemClick = longItemClick;
+    }
 
-        private CircleBgTextView textView;
 
-        public CalendarHolder(View itemView) {
+    public void setItemChecked(int postion) {
+        mBooleanArray.put(postion, true);
+        if (mLastCheckedPostion > -1) {
+            mBooleanArray.put(mLastCheckedPostion, false);
+            notifyItemChanged(mLastCheckedPostion);
+        }
+        notifyDataSetChanged();
+        mLastCheckedPostion = postion;
+    }
+
+    private class CalendarHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+
+        private TextView textView;
+        private OnItemClick itemClick;
+        private OnLongItemClick longItemClick;
+        private ArrayList<Date> list;
+
+        public CalendarHolder(View itemView, OnItemClick itemClick, OnLongItemClick longItemClick, ArrayList<Date> list) {
             super(itemView);
-            textView = (CircleBgTextView) itemView.findViewById(R.id.days);
+            this.itemClick = itemClick;
+            this.longItemClick = longItemClick;
+            this.list = list;
+            textView = (TextView) itemView.findViewById(R.id.days);
+            textView.setOnClickListener(this);
+            textView.setOnLongClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (itemClick != null) {
+                itemClick.setOnClick(list, getAdapterPosition());
+            }
+        }
+
+        @Override
+        public boolean onLongClick(View v) {
+            if (longItemClick != null) {
+                longItemClick.setOnLongItemClick(list, getAdapterPosition());
+            }
+            return true;
         }
     }
 }

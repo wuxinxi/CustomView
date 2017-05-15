@@ -16,6 +16,7 @@
     tools:context="com.wxx.customview.MainActivity">
 
     <com.wxx.customview.calendar.TRCalendar
+        android:id="@+id/tRcalendar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"></com.wxx.customview.calendar.TRCalendar>
 
@@ -34,9 +35,9 @@
 
     <SeekBar
         android:id="@+id/seekBar"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <com.wxx.customview.linechart.LineChart
         android:layout_width="wrap_content"
@@ -98,9 +99,9 @@
 
     <com.wxx.customview.paopaochuang.PaoPao
         android:id="@+id/pao"
-        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        android:visibility="gone" />
 
 </LinearLayout>

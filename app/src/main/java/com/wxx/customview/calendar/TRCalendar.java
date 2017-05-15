@@ -1,26 +1,17 @@
 package com.wxx.customview.calendar;
 
 import android.content.Context;
-import android.media.Image;
-import android.support.annotation.NonNull;
-import android.support.annotation.StringDef;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wxx.customview.R;
-
-import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +23,7 @@ import java.util.Date;
  * 邮箱：wu_tangren@163.com
  * TODO:一句话描述
  */
-public class TRCalendar extends LinearLayout implements View.OnClickListener {
+public class TRCalendar extends LinearLayout implements View.OnClickListener, OnItemClick, OnLongItemClick {
 
     private ImageView prev;
     private ImageView next;
@@ -46,6 +37,12 @@ public class TRCalendar extends LinearLayout implements View.OnClickListener {
     private Calendar calendar = Calendar.getInstance();
 
     private GridLayoutManager manager;
+
+    private CalendarAdapter mAdapter;
+
+    private CalendarListener listener;
+
+    private int currentPostion = -1;
 
     public TRCalendar(Context context) {
         this(context, null);
@@ -73,7 +70,9 @@ public class TRCalendar extends LinearLayout implements View.OnClickListener {
         next.setOnClickListener(this);
         manager = new GridLayoutManager(context, 7);
         gridView.setLayoutManager(manager);
-
+        mAdapter = new CalendarAdapter();
+        mAdapter.setOnClick(this);
+        mAdapter.setOnLongClick(this);
     }
 
 
@@ -109,8 +108,37 @@ public class TRCalendar extends LinearLayout implements View.OnClickListener {
             cld.add(Calendar.DAY_OF_MONTH, 1);
         }
 
-        Log.d(TAG, cells.size() + "的个数");
-        gridView.setAdapter(new CalendarAdapter(cells, calendar.get(calendar.MONTH)));
+        mAdapter.setAdd(cells, calendar.get(calendar.MONTH));
+        gridView.setAdapter(mAdapter);
     }
+
+    public void setListener(CalendarListener listener) {
+        this.listener = listener;
+    }
+
+
+    @Override
+    public void setOnClick(ArrayList<Date> list, int postion) {
+        Log.d(TAG, sdf.format(list.get(postion)));
+        if (listener != null) {
+            if (postion == currentPostion)
+                return;
+            listener.setOnIteclick(list, postion);
+            mAdapter.setItemChecked(postion);
+            currentPostion = postion;
+        }
+    }
+
+    @Override
+    public void setOnLongItemClick(ArrayList<Date> list, int postion) {
+        Log.d(TAG, sdf.format(list.get(postion)));
+
+    }
+
+
+    public interface CalendarListener {
+        void setOnIteclick(ArrayList<Date> list, int postion);
+    }
+
 
 }
